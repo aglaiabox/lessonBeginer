@@ -41,4 +41,14 @@ public class Train {
     public String toString() {
         return "train to "+destinationName+", number "+number+", time of departure is "+timeDeparture;
     }
+
+//    public int compareTo (Train train){
+//        if (this.number == train.number){
+//            return 0;
+//        } else if(this.number < train.number){
+//            return -1;
+//        } else {
+//            return 1;
+//        }
+//    }
 }

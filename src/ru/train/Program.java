@@ -4,13 +4,18 @@ package ru.train;
 //  название пункта назначения, номер поезда, время отправления.
 //  Создайте лист из пяти элементов типа Train,
 //  добавьте возможность сортировки элементов массива по номерам поездов.
+//  Добавить выбор - как будем сортировать и сортировку по выбранному признаку.
 //  Добавьте возможность вывода информации о поезде, номер которого введен пользователем,
 //  добавьте возможность сортировки листа по пункту назначения,
 //  причем поезда с одинаковым пунктом назначения должны быть упорядочены по времени отправления.
 
-import java.util.ArrayList;
 
-public class Programm {
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class Program {
     static ArrayList<Train> list = new ArrayList<Train>();
 
     public static void main (String[] args){
@@ -21,6 +26,8 @@ public class Programm {
         Train e = addTrain("Orlando", 882736, 1900);
 
         System.out.println(list);
+        sort();
+
     }
 
     private static Train addTrain(String destinationName, int trainNumber, int departureTime){
@@ -29,9 +36,38 @@ public class Programm {
         return a;
     }
 
+    private static void printInfAboutTrain (){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Please enter a train number");
+        int n = scan.nextInt();
+    }
+
+    private static void sort (){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Press 1 to sort by name of the destination, 2 to sort by train number, 3 to sort by departure time");
+        int choose = scan.nextInt();
+        if (choose==1){
+            ComparatorDestinationName comparatorDestination = new ComparatorDestinationName();
+            list.sort(comparatorDestination);
+            System.out.println(list);
+        } else if (choose==2){
+            ComparatorTrain comparatorTrain = new ComparatorTrain();
+            list.sort(comparatorTrain);
+            System.out.println(list);
+        } else if (choose==3){
+            ComparatorDepartureTime comparatorDepartureTime = new ComparatorDepartureTime();
+            list.sort(comparatorDepartureTime);
+            System.out.println(list);
+        }else {
+            System.out.println("uncorrent choose");
+        }
+
+    }
+
+
     private static void sortListByTrainNumbers(ArrayList list){
         ArrayList<Train> listForCopy = new ArrayList<Train>();
-        Train a =
+        list.get(0)
 
     }
 }
