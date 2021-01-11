@@ -2,15 +2,21 @@ package ru.train;
 // TODO: Создайте класс Train, содержащий поля:
 //  название пункта назначения, номер поезда, время отправления.
 
+import java.time.LocalTime;
+
 public class Train {
     private String destinationName;
     private int number;
-    private int timeDeparture;
+    int hour;
+    int min;
+    LocalTime timeDeparture;
 
-    public Train(String destinationName, int number, int timeDeparture){
+    public Train(String destinationName, int number, int hour, int min){
         this.destinationName = destinationName;
         this.number = number;
-        this.timeDeparture=timeDeparture;
+        this.min = min;
+        this.hour = hour;
+        this.timeDeparture =LocalTime.of(hour,min);
     }
 
     public String getDestinationName() {
@@ -27,14 +33,6 @@ public class Train {
 
     public void setNumber(int number) {
         this.number = number;
-    }
-
-    public int getTimeDeparture() {
-        return timeDeparture;
-    }
-
-    public void setTimeDeparture(int timeDeparture) {
-        this.timeDeparture = timeDeparture;
     }
 
     @Override

@@ -9,7 +9,10 @@ package ru.train;
 //  добавьте возможность сортировки листа по пункту назначения,
 //  причем поезда с одинаковым пунктом назначения должны быть упорядочены по времени отправления.
 
-
+//TODO II
+//todo change train time of departure
+//todo add time in trip
+//todo read user input for date and print datetimeof arrival
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -20,11 +23,11 @@ public class Program {
     static ArrayList<Train> list = new ArrayList<Train>();
 
     public static void main (String[] args){
-        Train a = addTrain("New York", 564738, 1145);
-        Train b = addTrain("Washington", 534537, 1245);
-        Train c = addTrain("New York", 345624, 1014);
-        Train d = addTrain("Chicago", 425375, 1534);
-        Train e = addTrain("Orlando", 882736, 1900);
+        Train a = addTrain("New York", 564738, 11, 45);
+        Train b = addTrain("Washington", 534537, 12, 45);
+        Train c = addTrain("New York", 345624, 10, 14);
+        Train d = addTrain("Chicago", 425375, 15, 34);
+        Train e = addTrain("Orlando", 882736, 19, 00);
 
         System.out.println(list);
         sort();
@@ -33,8 +36,8 @@ public class Program {
 
     }
 
-    private static Train addTrain(String destinationName, int trainNumber, int departureTime){
-        Train a=new Train(destinationName, trainNumber, departureTime);
+    private static Train addTrain(String destinationName, int trainNumber, int hour, int min){
+        Train a=new Train(destinationName, trainNumber, hour, min);
         list.add(a);
         return a;
     }
