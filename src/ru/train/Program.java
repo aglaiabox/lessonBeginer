@@ -13,6 +13,7 @@ package ru.train;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Program {
@@ -21,12 +22,14 @@ public class Program {
     public static void main (String[] args){
         Train a = addTrain("New York", 564738, 1145);
         Train b = addTrain("Washington", 534537, 1245);
-        Train c = addTrain("New Jersey", 345624, 1014);
+        Train c = addTrain("New York", 345624, 1014);
         Train d = addTrain("Chicago", 425375, 1534);
         Train e = addTrain("Orlando", 882736, 1900);
 
         System.out.println(list);
         sort();
+
+        printInfAboutTrain();
 
     }
 
@@ -40,6 +43,18 @@ public class Program {
         Scanner scan = new Scanner(System.in);
         System.out.println("Please enter a train number");
         int n = scan.nextInt();
+        Iterator<Train> iterator = list.iterator();
+        while (iterator.hasNext()){
+            Train a = iterator.next();
+            if (a.getNumber() == n){
+                System.out.println(a);
+                break;
+            }
+            if (!iterator.hasNext()){
+                System.out.println("Number of train isn't valid. Try again");
+                printInfAboutTrain();
+            }
+        }
     }
 
     private static void sort (){
@@ -65,9 +80,4 @@ public class Program {
     }
 
 
-    private static void sortListByTrainNumbers(ArrayList list){
-        ArrayList<Train> listForCopy = new ArrayList<Train>();
-        list.get(0)
-
-    }
 }

@@ -72,7 +72,6 @@ public class LectureArrayWow {
             for (int i = 0; i < array3.length; i++) {
                 if (array3[i] < array3[min]) {
                     min = i;
-                } else {
                 }
 
             }
