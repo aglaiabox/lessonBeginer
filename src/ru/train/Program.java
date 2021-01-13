@@ -16,7 +16,7 @@ import java.util.*;
 //TODO II
 //todo change train time of departure                           DONE
 //todo add time in trip                                         DONE
-//todo read user input for date and print datetimeof arrival
+//todo read user input for date and print datetimeof arrival    DONE
 
 //TODO III
 // todo в программе с трейнами сделать мапу, которая хранит трейны по номеру поезда.    DONE
@@ -44,20 +44,47 @@ public class Program {
 
         Train a = addTrain(newYork, 564738, 11, 45, 13,15);
         Train b = addTrain(washington, 534537, 12, 45, 6, 20);
-        Train c = addTrain(newYork, 345624, 10, 14, 3, 25);
+//        Train c = addTrain(newYork, 345624, 10, 14, 3, 25);
         Train d = addTrain(chikago, 425375, 15, 34, 4, 45);
         Train e = addTrain(orlando, 882736, 19, 00, 8, 26);
         printListLineByLine();
-
-        printArraivalTime();
-        printInfAboutTrainThroughMap();
-
-        sort();
-
-        printInfAboutTrainByIterator();
+        System.out.println(trainMap);
+        System.out.println(trainMapByDestination);
+        System.out.println(trainMapByDestination.get(newYork));
+        printInfChooseByDestination("New York");
+//        printArraivalTime();
+//        printInfAboutTrainThroughMap();
+//        sort();
+//        printInfAboutTrainByIterator();
 
 
     }
+
+    private static void printInfChooseByDestination(String nameDist){
+        Iterator iterator = trainMapByDestination.keySet().iterator();
+        while (iterator.hasNext()){
+            Destination a = (Destination) iterator.next();
+            if(a.name==nameDist) {
+                System.out.println( trainMapByDestination.get(a));
+            } else {
+                System.out.println("not exist");
+            }
+        }
+    }
+
+    private static void printInfChooseByDestination(){          // todo ПРОВЕРИТЬ
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Please enter a destination name");
+        String nameDest = scan.next();
+// ИСПОЛЬЗОВАНИЕ ИТЕРАТОРА ВВОДА
+        Iterator iterator = trainMapByDestination.keySet().iterator();
+        while (iterator.hasNext()){
+            Map.Entry entry = (Map.Entry) iterator.next();
+            Object key = entry.getKey();
+            Object value = entry.getValue();
+        }
+    }
+
 // todo QUESTION могу ли я здесь получить данные, которые обрабатываются в методе трейн? (дату отправления?)
     private static void printArraivalTime(){
         Scanner scan = new Scanner(System.in);
@@ -93,18 +120,7 @@ public class Program {
         return a;
     }
 
-    private static void printInfChooseByDestination(){          // todo ПРОВЕРИТЬ
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Please enter a destination name");
-        String nameDest = scan.next();
-// ИСПОЛЬЗОВАНИЕ ИТЕРАТОРА ВВОДА
-        Iterator iterator = trainMapByDestination.keySet().iterator();
-        while (iterator.hasNext()){
-            Map.Entry entry = (Map.Entry) iterator.next();
-            Object key = entry.getKey();
-            Object value = entry.getValue();
-        }
-    }
+
 
     private static void printInfAboutTrainByIterator(){
         Scanner scan = new Scanner(System.in);
