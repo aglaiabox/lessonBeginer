@@ -5,7 +5,7 @@ public class Giraf extends Animal {
     private static final String COLOR = "yellow";
 
     public Giraf(int weight){
-        super(weight, COLOR, METABOLISM_DEFAULT);
+        super("giraf", weight, COLOR, METABOLISM_DEFAULT);
     }
 
 

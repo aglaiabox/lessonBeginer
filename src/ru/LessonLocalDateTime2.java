@@ -1,13 +1,17 @@
 package ru;
 
 //TODO I
-//todo method read user input 1 for date time in format 'day/month/year_hour:minute'
-//todo method read user input 2 for date time in format 'day/month/year_hour:minute'
-//TODO 1 print diff in number of days
-//TODO 2 print in another format - 'month-day year hour-minute'
+//todo method read user input 1 for date time in format 'day/month/year_hour:minute'    DONE
+//todo method read user input 2 for date time in format 'day/month/year_hour:minute'    DONE
+//TODO 1 print diff in number of days                                                   DONE
+//TODO 2 print in another format - 'month-day year hour-minute'                         DONE
 
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
+import java.time.chrono.ChronoLocalDate;
+import java.time.chrono.ChronoZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
@@ -52,10 +56,16 @@ public class LessonLocalDateTime2 {
 
 
    private static void getPeriod (LocalDateTime first, LocalDateTime second){
-       int f = first.toLocalDate().getDayOfYear();
-       int s = second.toLocalDate().getDayOfYear();
-       int res = f-s;
-       System.out.println(f+" - "+s+" = "+res);
+       long f = first.toEpochSecond(ZoneOffset.UTC);
+       System.out.println(f);
+       long s = second.toEpochSecond(ZoneOffset.UTC);
+       System.out.println(s);
+
+       long res = s-f;
+       res/=60;
+       res/=60;
+       res/=24;
+       System.out.println(res);
 
    }
 }

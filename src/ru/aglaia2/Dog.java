@@ -5,9 +5,12 @@ public class Dog extends Animal{
 
     // *************** это мы вызываем конструктор из родительского класса ****************
     public Dog(int weight, String color){
-        super(weight, color, METABOLISM_DEFAULT);
+        super("dog", weight, color, METABOLISM_DEFAULT);
     }
 
+    public Dog(String name, int weight, String color, int metabolism) {
+        super(name, weight, color, METABOLISM_DEFAULT);
+    }
 
     @Override
     public void toSay(){
