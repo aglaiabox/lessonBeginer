@@ -1,6 +1,4 @@
-package ru.train;
-
-import java.util.LinkedList;
+package part3.train;
 
 public class Destination {
     final String name;

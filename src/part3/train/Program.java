@@ -1,4 +1,4 @@
-package ru.train;
+package part3.train;
 
 // TODO: Создайте класс Train, содержащий поля:                                     DONE
 //  название пункта назначения, номер поезда, время отправления.                    DONE
@@ -9,7 +9,7 @@ package ru.train;
 //  добавьте возможность сортировки листа по пункту назначения,                             DONE
 //  причем поезда с одинаковым пунктом назначения должны быть упорядочены по времени отправления. DONE
 
-import ru.LessonFile1;
+//import part3.LessonFile1;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -51,7 +51,7 @@ public class Program {
         Train d = addTrain(chikago, 425375, 15, 34, 4, 45);
         Train e = addTrain(orlando, 882736, 19, 00, 8, 26);
 
-        LessonFile1.writeToFile(list);
+//        LessonFile1.writeToFile(list);
         printListLineByLine();
         System.out.println(mapListTrainByDestination);
 //        System.out.println(trainMap);

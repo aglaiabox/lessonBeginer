@@ -1,6 +1,5 @@
-package ru.train;
+package part3.train;
 
-import java.time.LocalTime;
 import java.util.Comparator;
 
 public class ComparatorDestinationName implements Comparator<Train> {

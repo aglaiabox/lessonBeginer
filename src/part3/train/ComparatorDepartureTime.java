@@ -1,4 +1,4 @@
-package ru.train;
+package part3.train;
 
 import java.util.Comparator;
 

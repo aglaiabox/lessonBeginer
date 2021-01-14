@@ -1,12 +1,10 @@
-package ru.train;
+package part3.train;
 // TODO: Создайте класс Train, содержащий поля:                     DONE
 //  название пункта назначения, номер поезда, время отправления.    DONE
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
 
 public class Train {
 //    private String destinationName;
