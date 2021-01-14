@@ -1,7 +1,5 @@
 package ru.aglaiaLinkedList;
 
-import ru.aglaia2.Animal;
-
 public class Node<T> {
     T animal;
     Node<T> next;

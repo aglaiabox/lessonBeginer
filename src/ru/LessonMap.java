@@ -1,8 +1,8 @@
 package ru;
 
-import ru.aglaia2.Animal;
-import ru.aglaia2.Cat;
-import ru.aglaia2.VetClinic;
+import ru.aglaia2Animals.Animal;
+import ru.aglaia2Animals.Cat;
+import ru.aglaia2Animals.VetClinic;
 
 import java.util.ArrayList;
 import java.util.HashMap;

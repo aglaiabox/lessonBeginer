@@ -1,4 +1,4 @@
-package ru.aglaia2;
+package ru.aglaia2Animals;
 
 public abstract class Bird implements Sayable {
     String color;

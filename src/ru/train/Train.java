@@ -20,10 +20,8 @@ public class Train {
     private LocalTime timeArrival;
     //todo read user input for date and print datetimeof arrival
 
-    public LocalDateTime getTimeArrival(){
-        Scanner scan = new Scanner(System.in);
-        System.out.println("To know a time of arriving, please, enter a departure date on format date.month (count). year");
-        String date = scan.next();
+    public LocalDateTime getTimeArrival(String date){
+
         String dateTime = date + "."+hour+":"+min;
         LocalDateTime departDateTime = LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern("dd.MM.yyyy.HH:mm"));
         LocalDateTime arrivalDateTime = departDateTime.plusHours(hoursInWay).plusMinutes(min);
@@ -54,6 +52,10 @@ public class Train {
 
     public void setNumber(int number) {
         this.number = number;
+    }
+
+    public String writeMe(){
+        return destination + "|" + number + "|" + timeDeparture;
     }
 
     @Override

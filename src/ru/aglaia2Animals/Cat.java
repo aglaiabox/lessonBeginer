@@ -1,4 +1,4 @@
-package ru.aglaia2;
+package ru.aglaia2Animals;
 
 public class Cat extends Animal{
     private static final int METABOLISM_DEFAULT = 3;

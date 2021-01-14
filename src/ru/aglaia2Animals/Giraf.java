@@ -1,4 +1,4 @@
-package ru.aglaia2;
+package ru.aglaia2Animals;
 
 public class Giraf extends Animal {
     private static final int METABOLISM_DEFAULT = 5;

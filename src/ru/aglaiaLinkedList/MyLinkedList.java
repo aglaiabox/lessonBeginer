@@ -1,6 +1,6 @@
 package ru.aglaiaLinkedList;
 
-import ru.aglaia2.Animal;
+import ru.aglaia2Animals.Animal;
 
 public class MyLinkedList<T> {
     Node<T> first;

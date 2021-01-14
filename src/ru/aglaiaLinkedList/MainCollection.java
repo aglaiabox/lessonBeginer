@@ -1,8 +1,7 @@
 package ru.aglaiaLinkedList;
 
-import ru.aglaia2.Animal;
-import ru.aglaia2.Cat;
-import ru.aglaia2.Dog;
+import ru.aglaia2Animals.Animal;
+import ru.aglaia2Animals.Cat;
 
 import java.util.ArrayList;
 import java.util.Iterator;

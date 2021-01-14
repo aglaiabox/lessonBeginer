@@ -1,4 +1,4 @@
-package ru.aglaia2;
+package ru.aglaia2Animals;
 
 public abstract class Animal implements Sayable, Coloable {
     private final int metabolism;

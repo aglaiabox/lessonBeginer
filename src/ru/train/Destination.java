@@ -1,6 +1,6 @@
 package ru.train;
 
-import java.sql.Time;
+import java.util.LinkedList;
 
 public class Destination {
     final String name;
@@ -8,16 +8,18 @@ public class Destination {
 ////    Time time = Time.valueOf(timeInTrip);
 
 
+
     public Destination(String name, String transitTime) {
         this.name = name;
 //        TimeFo
-//        this.transitTime = Time.valueOf(transitTime);
+//        this.transitTime = Time.valueOf(transitTime)
 
     }
 
     public String getName() {
         return name;
     }
+
 
     @Override
     public String toString() {
@@ -45,5 +47,5 @@ public class Destination {
 }
 
 
-//todo override equals & hashCode
+//todo override equals & hashCode       DONE
 

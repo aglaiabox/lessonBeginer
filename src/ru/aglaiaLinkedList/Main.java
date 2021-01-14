@@ -3,10 +3,10 @@ package ru.aglaiaLinkedList;
 import com.company.vehicles.Car;
 import com.company.vehicles.Lorry;
 import com.company.vehicles.SportCar;
-import ru.aglaia2.Animal;
-import ru.aglaia2.Cat;
-import ru.aglaia2.Dog;
-import ru.aglaia2.Giraf;
+import ru.aglaia2Animals.Animal;
+import ru.aglaia2Animals.Cat;
+import ru.aglaia2Animals.Dog;
+import ru.aglaia2Animals.Giraf;
 
 public class Main {
     public static void main(String[] args){
