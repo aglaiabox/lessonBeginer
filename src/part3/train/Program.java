@@ -11,6 +11,8 @@ package part3.train;
 
 //import part3.LessonFile1;
 
+import part3.LessonFile1;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -51,7 +53,7 @@ public class Program {
         Train d = addTrain(chikago, 425375, 15, 34, 4, 45);
         Train e = addTrain(orlando, 882736, 19, 00, 8, 26);
 
-//        LessonFile1.writeToFile(list);
+        LessonFile1.writeToFile(list);
         printListLineByLine();
         System.out.println(mapListTrainByDestination);
 //        System.out.println(trainMap);
