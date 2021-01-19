@@ -22,53 +22,41 @@ public class LessonFile2Task {
 //        LinkedList<String> list = readToList("trains.s");
 //        System.out.println(list);
 
-        //todo add stop word to text and read
-String textUntilStopWord = readUntilStopWord("poem3.txt", "playhouse");
-        System.out.println(textUntilStopWord);
+        //todo add stop word to text and read               DONE
+String textUntilStopWord = readUntilStopWord("poem3.txt", "true");
+        System.out.println("Text: " +textUntilStopWord);
         }
         // The proper exception handling - what is it?
 
         private static String readUntilStopWord (String name, String stopWord) throws Exception{
-        String wayAndName = "/Users/aglaia/Documents/"+name;
-        InputStream inputStream = new FileInputStream(wayAndName);
-        Reader isr = new InputStreamReader(inputStream);
-        int i = isr.read();
-        while (i !=-1){
-            char ch = (char) i;
-            while (i !=)
-            i = isr.read(); // почему это можно здесь, а можно засунуть в усоловие while
-        }
-        isr.close();
+        String fullPathName = PathForLessonsFiles.path+name;
+        BufferedReader bf = new BufferedReader(new FileReader(fullPathName));
+        StringBuilder textBuilder = new StringBuilder();
+        String s;
 
-//        BufferedReader bf = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-//            String s;
-//            StringBuilder line = new StringBuilder();
-//            StringBuilder word = new StringBuilder();
-//            String w = null;
-//            String textUntilStopWord = null;
-//            while ((s = bf.readLine()) != null) {
-//                if (s != " ") {
-//                    word.append(s);
-//                    w = word.toString();
-//                    System.out.println(w);
-//                    System.out.println("//");
-//                } else if (s == " "){
-//                    if (w != stopWord) {
-//                        line.append(w);
-//                        line.append(' ');
-//                    } else {
-//                        line.append(w);
-//                        textUntilStopWord = line.toString();
-//                        break;
-//
-//                    }
-//                }
-//            }
-//return textUntilStopWord;
+            boolean stop = false;
+            s = "start";
+            while ((s != null) && (!stop)) {
+                s = bf.readLine();
+                if (!s.contains(stopWord)) {
+                    textBuilder.append(s);
+
+                } else {
+                    int position = s.indexOf(stopWord);
+                    String partStringUntilStopWord = s.substring(0, position);
+                    textBuilder.append(partStringUntilStopWord);
+                    textBuilder.append(stopWord);
+                    stop=true;
+                }
+            }
+
+        String textUntilStopWord = textBuilder.toString();
+
+return textUntilStopWord;
         }
 
     public static void inputBuffered (String name) throws Exception {
-        String wayAndName = "/Users/aglaia/Documents/" + name;
+        String wayAndName = PathForLessonsFiles.path + name;
         File file = new File(wayAndName);
         BufferedReader bf = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
         String s; //почему стринг а не инт?
@@ -79,7 +67,7 @@ String textUntilStopWord = readUntilStopWord("poem3.txt", "playhouse");
 
 
     private static void inputStream (String name) throws Exception{
-        String wayAndName = "/Users/aglaia/Documents/"+name;
+        String wayAndName = PathForLessonsFiles.path+name;
         File file = new File(wayAndName);
         FileInputStream fis = new FileInputStream(file);
         int i;
@@ -91,7 +79,7 @@ String textUntilStopWord = readUntilStopWord("poem3.txt", "playhouse");
 
 
     public static String readToString (String name) throws Exception {
-        String wayAndName = "/Users/aglaia/Documents/" + name;
+        String wayAndName = PathForLessonsFiles.path + name;
         File file = new File(wayAndName);
         BufferedReader bf = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
         String s;
@@ -106,7 +94,7 @@ String textUntilStopWord = readUntilStopWord("poem3.txt", "playhouse");
     }
 
     public static LinkedList readToList (String name) throws Exception{
-        String wayAndName = "/Users/aglaia/Documents/" + name;
+        String wayAndName = PathForLessonsFiles.path + name;
         File file = new File(wayAndName);
         BufferedReader bf = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
         LinkedList<String> list= new LinkedList<>();

@@ -8,7 +8,8 @@ import java.util.List;
 
 public class LessonFile1 {
     public static void main(String[] args) throws Exception {
-        File file = new File("/Users/aglaia/Documents/test.s");
+        String pathAndName = PathForLessonsFiles.path+ "test.s";
+        File file = new File(pathAndName);
         FileOutputStream fos = new FileOutputStream(file, true);
         fos.write("hello file".getBytes());
         fos.write(System.lineSeparator().getBytes());
@@ -17,7 +18,7 @@ public class LessonFile1 {
     }
 
     public static void writeToFile(List<Train> trainList) throws Exception {
-        String fileName = "/Users/aglaia/Documents/trains.s";
+        String fileName = PathForLessonsFiles.path+ "trains.s";
         File file = new File(fileName);
         FileOutputStream fos = new FileOutputStream(file);
 

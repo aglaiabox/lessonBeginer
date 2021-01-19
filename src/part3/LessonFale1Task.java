@@ -7,15 +7,15 @@ import java.io.*;
 public class LessonFale1Task {
     public static void main (String[] args) throws Exception {
 
-        String nameFile = "/Users/aglaia/Documents/poem.txt";
-        String nameFile2 = "/Users/aglaia/Documents/poem2.txt";
+        String nameFile = PathForLessonsFiles.path+ "/poem.txt";
+        String nameFile2 = PathForLessonsFiles.path+ "poem2.txt";
 
         long timeInputStream = inputStream(nameFile);
         long timeInputBuffered = inputBuffered(nameFile2);
 
 
         String str = "time buffered = "+timeInputBuffered +", time stream = "+timeInputStream;
-        addStringToDoc(str);
+        addStringToDoc(str, "test.s");
         System.out.println(str);
 
 // как сделать перенос строки когда записываешь в файл?
@@ -59,15 +59,16 @@ public class LessonFale1Task {
         return finish-start;
     }
 
-    public static void createNewDoc(String name) throws FileNotFoundException {
-        String wayAndName = "/Users/aglaia/Documents/"+name;
+    public static boolean createNewDoc(String name) throws Exception {
+        String wayAndName = PathForLessonsFiles.path+name;
         File file = new File(wayAndName);
-        FileOutputStream fos = new FileOutputStream(file, true);
-
+        return file.createNewFile();
+        // опция: возвращает тру если создает файл и фолс если такой файл уже был
     }
 
-    public static void addStringToDoc(String str) throws IOException{
-        FileOutputStream fos = new FileOutputStream("/Users/aglaia/Documents/test.s", true);
+    public static void addStringToDoc(String str, String name) throws IOException{
+        String pathAndName = PathForLessonsFiles.path+ name;
+        FileOutputStream fos = new FileOutputStream(pathAndName, true);
         fos.write(str.getBytes());
         fos.close();
     }
