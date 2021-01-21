@@ -1,6 +1,8 @@
 package part3.train;
 
-public class Destination {
+import java.io.Serializable;
+
+public class Destination implements Serializable {
     final String name;
 //    Time transitTime;
 ////    Time time = Time.valueOf(timeInTrip);
