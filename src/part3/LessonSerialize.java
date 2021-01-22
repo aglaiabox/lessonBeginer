@@ -10,7 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO 1 save trains to file
+//TODO 1 save trains to file                    DONE
 //TODO 4 REDO use archive  - ZipOutputStream
 
 public class LessonSerialize {
@@ -30,11 +30,20 @@ public class LessonSerialize {
         Train c = new Train(newYork, 345624, 10, 14, 3, 25);
         Train d = new Train(chikago, 425375, 15, 34, 4, 45);
         Train e = new Train(orlando, 882736, 19, 00, 8, 26);
+        ArrayList<Train> listTrain= new ArrayList<>();
+        listTrain.add(a);
+        listTrain.add(b);
+        listTrain.add(c); listTrain.add(d); listTrain.add(e);
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(); // аррай явлется заглушкой
         FileOutputStream fos = new FileOutputStream(PathForLessonsFiles.path + "destinations.bin");
         ObjectOutputStream objOut = new ObjectOutputStream(fos);// тут был byteArrayOutputStream
         objOut.writeObject(destinationList);
         fos.close();
+
+        FileOutputStream fosTrain = new FileOutputStream(PathForLessonsFiles.path +"trains.bin");
+        ObjectOutputStream objOutTrains = new ObjectOutputStream(fosTrain);
+        objOutTrains.writeObject(listTrain);
+        fosTrain.close();
     }
 }

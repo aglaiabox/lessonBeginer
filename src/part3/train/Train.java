@@ -2,11 +2,12 @@ package part3.train;
 // TODO: Создайте класс Train, содержащий поля:                     DONE
 //  название пункта назначения, номер поезда, время отправления.    DONE
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class Train {
+public class Train implements Serializable {
 //    private String destinationName;
     public Destination destination;
     private int number;
