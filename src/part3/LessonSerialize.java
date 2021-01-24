@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.ZipOutputStream;
 
 //TODO 1 save trains to file                    DONE
 //TODO 4 REDO use archive  - ZipOutputStream
@@ -41,6 +42,7 @@ public class LessonSerialize {
         objOut.writeObject(destinationList);
         fos.close();
 
+        ZipOutputStream zos = new ZipOutputStream(PathForLessonsFiles.path +"trains.zip");
         FileOutputStream fosTrain = new FileOutputStream(PathForLessonsFiles.path +"trains.bin");
         ObjectOutputStream objOutTrains = new ObjectOutputStream(fosTrain);
         objOutTrains.writeObject(listTrain);
