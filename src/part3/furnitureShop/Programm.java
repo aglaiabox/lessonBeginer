@@ -3,6 +3,8 @@ package part3.furnitureShop;
 import com.sun.codemodel.internal.util.UnicodeEscapeWriter;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 
 // Есть магаз, который торгует мебелью. Моя программа запускается.
@@ -17,6 +19,8 @@ import java.util.Scanner;
 public class Programm {
     private static ArrayList<Material> listMaterial;
     private static ArrayList<Furniture> listFurniture;
+    private static ArrayList<Matrass> listMattrass;
+    private static Map<Integer, Matrass>;
 
 public static void main (String[] args){
     boolean toContinue = true;
@@ -54,18 +58,22 @@ public static void main (String[] args){
 }
 
 private static void addNewFurniture () {
-    System.out.println("press 1 for adding a bed, 2 for adding a chair, 9 for coming to the main menu");
+    System.out.println("press 1 for adding a bed, for adding a chair, 3 for adding a mattress; 9 for coming to the main menu");
     Scanner scan = new Scanner(System.in);
     int choose = scan.nextInt();
     boolean toContinue = true;
     while (toContinue){
+        toContinue = false;
     switch (choose) {
         case 1:
-            addBed(); toContinue = false;
-        case 2:
+            addBed();
+            break;
+        case 3:addNewMattress();
+            break;
 
         default:
             System.out.println("illegal argument, try again.");
+            toContinue = true;
     }
     }
     }
@@ -81,8 +89,73 @@ private static void addNewFurniture () {
         System.out.println("Enter a width and a length in centimetres");
         int width = scanner.nextInt();
         int length = scanner.nextInt();
+
+
+
+
+
         Bed bed = new Bed(name, weight, quantity, width, length);
         listFurniture.add(bed);
+    }
+
+    private static void doBedHaveAMattress(){
+    Scanner scanner = new Scanner(System.in);
+        System.out.println("Do it come with a mattress? put 1 for yes and 2 for not");
+        int choose = scanner.nextInt();
+        switch (choose){
+            case 1:
+                System.out.println("choose mattress: ");
+                Iterator iterator = listMattrass.iterator();
+                while (iterator.hasNext()){
+                    int n= 1;
+                    System.out.println("press" + n + "for choosing "+ iterator.next());
+                    n++;
+                }
+                int chMat = scanner.nextInt();
+                //мы получили матрас. Этот матрас надо поймать, вернуть и добавить к кровати
+
+
+
+        }
+    }
+
+    private static void chooseMattressForBed(){
+    Scanner scanner = new Scanner(System.in);
+
+    }
+
+    private static Matrass addNewMattressToBed (){
+    Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a name of the chair");
+        String name = scanner.nextLine();
+        System.out.println("Enter a weight");
+        int weight = scanner.nextInt();
+        Matrass mat = new Matrass(name,weight,1);
+        listMattrass.add(mat);
+        return mat;
+    }
+
+    private static Matrass addNewMattress (){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a name of the chair");
+        String name = scanner.nextLine();
+        System.out.println("Enter a weight");
+        int weight = scanner.nextInt();
+        System.out.println("How many mattresses?");
+        int quantity = scanner.nextInt();
+        Matrass mat = new Matrass(name,weight,quantity);
+        listMattrass.add(mat);
+        return mat;
+    }
+
+    private static void addChair (){
+    Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a name of the chair");
+        String name = scanner.nextLine();
+        System.out.println("Enter a weight");
+        int weight = scanner.nextInt();
+        System.out.println("How many ");
+        int quantity = scanner.nextInt();
     }
 }
 
