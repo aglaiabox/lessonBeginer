@@ -1,7 +1,5 @@
 package part3.furnitureShop;
 
-import com.sun.codemodel.internal.util.UnicodeEscapeWriter;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -20,7 +18,7 @@ public class Programm {
     private static ArrayList<Material> listMaterial;
     private static ArrayList<Furniture> listFurniture;
     private static ArrayList<Matrass> listMattrass;
-    private static Map<Integer, Matrass>;
+//    private static Map<Integer, Matrass>;
 
 public static void main (String[] args){
     boolean toContinue = true;
