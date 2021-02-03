@@ -8,10 +8,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 //todo читаю текст из файла и делаю словарь -
 // чтобы пользователь вводит букву и
@@ -22,13 +19,22 @@ public class LessonFile4Task {
         String text = readFile("poem.txt");
         String text1 = deleteDoubleSpases(text);
         System.out.println(text);
-        addWordsToMapa(text1);
 
-        System.out.println("Enter a letter");
-        Scanner scan = new Scanner(System.in);
-        String st = scan.next();
-        char ch = st.charAt(0);
-        System.out.println( mapa.get(ch));
+        String[] words = text1.split(" ");
+        for (int i = 0; i < text1.length(); i++) {
+//            words[i] = deletePunctuations(words[i]);
+        }
+        Arrays.sort(words);
+        System.out.println(words);
+
+
+// делаю словарь -  пользователь вводит букву и получает все слова на эту букву.
+//        addWordsToMapa(text1);
+//        System.out.println("Enter a letter");
+//        Scanner scan = new Scanner(System.in);
+//        String st = scan.next();
+//        char ch = st.charAt(0);
+//        System.out.println( mapa.get(ch));
     }
 
     private static void addWordsToMapa(String text) {
@@ -36,11 +42,11 @@ public class LessonFile4Task {
         for (int i = 0; i < words.length; i++) {
             String word = words [i];
             char firstLetter = word.charAt(0);
-            int indexLastLetter = word.length()-1;
-            char lastSymbol = word.charAt(indexLastLetter);
-            if (lastSymbol == ','|| lastSymbol == '.'||lastSymbol == ':'||lastSymbol == ';'||lastSymbol == '"'||lastSymbol == '-' ){
-                word = word.substring(0,indexLastLetter);
-            }
+            firstLetter = Character.toLowerCase(firstLetter); // ignore case for the key
+            System.out.println(firstLetter);
+
+            word = deletePunctuations(word);
+
             if (!mapa.containsKey(firstLetter)){
                 ArrayList<String> listWordsOneFirstLetter = new ArrayList<>();
                 listWordsOneFirstLetter.add(word);
@@ -53,6 +59,15 @@ public class LessonFile4Task {
 
             }
         }
+    }
+
+    private static String deletePunctuations(String word) {
+        int indexLastLetter = word.length() - 1;
+        char lastSymbol = word.charAt(indexLastLetter);
+        if (lastSymbol == ',' || lastSymbol == '.' || lastSymbol == ':' || lastSymbol == ';' || lastSymbol == '"' || lastSymbol == '-') {
+            word = word.substring(0, indexLastLetter);
+        }
+        return word;
     }
 
     private static String readFile(String name) throws IOException {
