@@ -4,15 +4,14 @@ package part3;
 //  отсортировать в алфавитном порядке и
 //  сохранить в другой файл
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 //todo читаю текст из файла и делаю словарь -
 // чтобы пользователь вводит букву и
 // получает все слова на эту букву. Использовать hash map
+
+// Удалить цифры?
 public class LessonFile4Task {
     public static Map<Character, ArrayList<String>> mapa = new HashMap<>();
     public static void main(String[] args) throws Exception{
@@ -20,12 +19,9 @@ public class LessonFile4Task {
         String text1 = deleteDoubleSpases(text);
         System.out.println(text);
 
-        String[] words = text1.split(" ");
-        for (int i = 0; i < text1.length(); i++) {
-//            words[i] = deletePunctuations(words[i]);
-        }
-        Arrays.sort(words);
-        System.out.println(words);
+        String[] wordsInAlphaberOrder = sortWordsInAlphaberOrder(text1);
+
+        writeToFile(wordsInAlphaberOrder, "sortedWords.txt");
 
 
 // делаю словарь -  пользователь вводит букву и получает все слова на эту букву.
@@ -35,6 +31,28 @@ public class LessonFile4Task {
 //        String st = scan.next();
 //        char ch = st.charAt(0);
 //        System.out.println( mapa.get(ch));
+    }
+
+    private static void writeToFile(String[] wordsInAlphaberOrder, String fileName) throws IOException {
+        File file = new File(PathForLessonsFiles.path+fileName);
+        BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+        for (int i = 0; i < wordsInAlphaberOrder.length; i++) {
+        bw.write(wordsInAlphaberOrder[i]);
+        bw.write("\n");}
+    }
+
+    private static String[] sortWordsInAlphaberOrder(String text1) {
+        String[] words = text1.split(" ");
+        for (int i = 0; i < words.length; i++) {
+            words[i] = deletePunctuations(words[i]);
+//            System.out.println(words[i]);
+        }
+        Arrays.sort(words);
+
+        for (int i = 0; i < words.length; i++) {
+            System.out.println(words[i]);
+        }
+        return words;
     }
 
     private static void addWordsToMapa(String text) {
@@ -64,8 +82,13 @@ public class LessonFile4Task {
     private static String deletePunctuations(String word) {
         int indexLastLetter = word.length() - 1;
         char lastSymbol = word.charAt(indexLastLetter);
-        if (lastSymbol == ',' || lastSymbol == '.' || lastSymbol == ':' || lastSymbol == ';' || lastSymbol == '"' || lastSymbol == '-') {
+        if (lastSymbol == ',' || lastSymbol == '.' || lastSymbol == ':' || lastSymbol == ';' || lastSymbol == '"' || lastSymbol == '-'|| lastSymbol == ')') {
             word = word.substring(0, indexLastLetter);
+        }
+
+        char firstSymbol = word.charAt(0);
+        if (firstSymbol == '"' || firstSymbol == '(' || firstSymbol == '-') {
+            word = word.substring(1);
         }
         return word;
     }
