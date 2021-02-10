@@ -9,26 +9,14 @@ public class DataStorage {
     public static Map<String, Mattress> mapMattress = new HashMap<>();
     public static Map<String, Furniture> mapFurniture = new HashMap<>();
 
-    public static String fileFurnitureMapName = PathForLessonsFiles.path+"furnitureMapa.txt";
-    public static String fileMattressesName = PathForLessonsFiles.path+"mattressesMapa.txt";
-    public static String fileMattressesName1 = PathForLessonsFiles.path+"mattresses.txt";
+    public static String fileFurnitureName = PathForLessonsFiles.path+"furniture.txt";
+    public static String fileMattressesName = PathForLessonsFiles.path+"mattresses.txt";
 
 
-    public static Map<Integer, Mattress> mapMattress1 = new HashMap<>();
-
-    public static void copyMap(){
-        Iterator<Map.Entry<Integer, Mattress>> iter = mapMattress1.entrySet().iterator();
-        while (iter.hasNext()){
-            Map.Entry<Integer,Mattress> entry = iter.next();
-            mapMattress.put(entry.getValue().name, entry.getValue());
-        }
-        System.out.println(mapMattress);
-    }
 
     public static void saveAllData (){
         saveData(fileMattressesName, mapMattress);
-        saveData(fileFurnitureMapName, mapFurniture);
-        saveData(fileMattressesName1, mapMattress1);
+        saveData(fileFurnitureName, mapFurniture);
         System.out.println("Data were saved");
     }
 
@@ -49,8 +37,9 @@ public class DataStorage {
 
     public static void getAllData (){
         try{
-        mapMattress1 = (Map<Integer, Mattress>) getData(fileMattressesName);
-        mapFurniture = (Map<String, Furniture>) getData(fileFurnitureMapName);
+        mapFurniture = (Map<String, Furniture>) getData(fileFurnitureName);
+        mapMattress = (Map<String, Mattress>) getData(fileMattressesName);
+            System.out.println();
         }
 
         catch (ClassCastException e){
@@ -80,6 +69,7 @@ public class DataStorage {
         while (iter.hasNext()){
             System.out.println(iter.next()+"; ");
         }
+        System.out.println("inf were printed");
     }
 
     public static void deleteOneMattresses (){
@@ -109,7 +99,7 @@ public class DataStorage {
         }
     }
 
-    public static Furniture chooseFurniture(Map <String, Furniture> map) throws Exception {
+    public static Furniture chooseFurniture(Map map) throws Exception {
         Iterator<Map.Entry<String, Furniture>> iterator = map.entrySet().iterator();
         while (iterator.hasNext()){
             Map.Entry<String, Furniture> entry = iterator.next();
@@ -130,9 +120,9 @@ public class DataStorage {
 
         if (!DataStorage.mapMattress.containsKey(chooseMat)){
             throw new Exception("Illegal enter, there is no furniture with this name. ");
-        } else {
-            return map.get(chooseMat);
         }
+            return null;
+
     }
 
 }

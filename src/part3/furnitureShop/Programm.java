@@ -15,9 +15,6 @@ import java.util.Scanner;
 public class Programm {
     public static void main(String[] args) {
         DataStorage.getAllData();
-        DataStorage.copyMap();
-//        DataStorage.saveFurnitureFromListToMap();
-//        System.out.println(DataStorage.mapFurniture);
         mainMenu();
 
     }

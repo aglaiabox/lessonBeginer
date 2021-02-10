@@ -1,7 +1,5 @@
 package part3.furnitureShop;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
@@ -48,18 +46,27 @@ public class Bed extends Furniture{
                 switch (choose) {
                     case 1:
                         if (DataStorage.mapMattress == null || DataStorage.mapMattress.isEmpty()) {
-                            System.out.println("Sorry, there is no available mattresses in the base. We are starting a process of adding a new one: ");
-                            return creatingMattress(quantity);
+                            System.out.println("Sorry, there is no available mattresses in the base. Do you want to add new one? Press 2 to add new mattress and 3 for no mattress ");
+                            choose = scanner.nextInt();
+                            switch (choose){
+                                case 2:
+                                    Mattress mattress = new Mattress(quantity);
+                                    return mattress;
+                                case 3:
+                                    System.out.println("Mattress wasn't added");
+                                    return null;
+                            }
                         } else {
                             return choosingMattressForBed(quantity);
                         }
 
                     case 2:
-                        return creatingMattress(quantity);
+                        Mattress mattress = new Mattress(quantity);
+                        return mattress;
 
                     case 3:
                         System.out.println("Mattress wasn't added");
-                        toContinue =false;
+                        return null;
 
                     default:
                         throw new IllegalStateException("Unexpected value: " + choose); // эта строчка добавилась автоматически почему через throw?
@@ -74,39 +81,32 @@ public class Bed extends Furniture{
         return null;
     }
 
-    public static Mattress creatingMattress(int quantity) {
-        Mattress mat = new Mattress(quantity);
-        return mat;
-    }
-
 
 
     private static Mattress choosingMattressForBed(int quantity) throws Exception {
         System.out.println("choose type of mattress: ");
         System.out.println("enter \"new\" to enter a new one");
         Scanner scanner = new Scanner(System.in);
-        //TODO how to use iterator with map  DONE
-        return DataStorage.chooseFurniture(DataStorage.mapMattress);
+        Iterator<Map.Entry<String, Mattress>> iterator = DataStorage.mapMattress.entrySet().iterator();
+        while (iterator.hasNext()){
+            Map.Entry<String, Mattress> entry = iterator.next();
+            System.out.println("enter " + entry.getKey() + " for " + entry.getValue());
+        }
+        String chooseMat = scanner.nextLine();
+        if (chooseMat.equalsIgnoreCase("new")) {
+            Mattress mattress = new Mattress(quantity);
+            return mattress;
+        }
+
+        if (!DataStorage.mapMattress.containsKey(chooseMat)){
+            throw new Exception("Illegal enter");
+        }
+
+        Mattress mat = DataStorage.mapMattress.get(chooseMat); //
+        mat.quantity = mat.quantity + quantity;
+        return mat;
     }
 
-//    private static Mattress chooseFurniture(int quantity, Scanner scanner) throws Exception {
-//        Iterator<Map.Entry<Integer, Mattress>> iterator = DataStorage.mapMattress.entrySet().iterator();
-//        while (iterator.hasNext()){
-//            Map.Entry<Integer, Mattress> entry = iterator.next();
-//            System.out.println("enter " + entry.getKey() + " for " + entry.getValue());
-//        }
-//        int chooseMat = scanner.nextInt();
-//        if (chooseMat==0)
-//            return creatingMattress(quantity);
-//
-//        if (!DataStorage.mapMattress.containsKey(chooseMat)){
-//            throw new Exception("Illegal enter");
-//        }
-//
-//        Mattress mat = DataStorage.mapMattress.get(chooseMat); // todo mapMattress !contains key repeat
-//        mat.quantity = +quantity;
-//        return mat;
-//    }
 
 
 }

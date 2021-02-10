@@ -1,6 +1,7 @@
 package part3.furnitureShop;
 
-import java.io.Serializable;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Mattress extends Furniture {
 
@@ -18,4 +19,6 @@ public class Mattress extends Furniture {
     }
 
 
+
 }
+
