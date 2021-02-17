@@ -7,6 +7,7 @@ public class Furniture implements Serializable {
     public String name;
     public int weight;
     public int quantity;
+//    private Material material;
 //    Material material;
 
     public Furniture() {
@@ -17,6 +18,8 @@ public class Furniture implements Serializable {
         int weight = scanner.nextInt();
         System.out.println("How many goods");
         int quantity = scanner.nextInt();
+
+
 
         this.name = name;
         this.weight = weight;

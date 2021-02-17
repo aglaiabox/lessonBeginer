@@ -107,6 +107,8 @@ public class Bed extends Furniture{
         return mat;
     }
 
-
+public static void chooseAgain () throws Exception {
+    Furniture furniture = DataStorage.chooseFurniture(DataStorage.mapMattress);
+}
 
 }

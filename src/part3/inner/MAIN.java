@@ -3,7 +3,6 @@ package part3.inner;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO how to create list with objects
 //TODO read about static
 // todo read inner
 // todo exersises on java lessons
